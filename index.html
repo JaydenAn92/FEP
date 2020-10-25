@@ -2,29 +2,101 @@
 <html lang="kr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/common.js"></script>
 </head>
 <body>
     <div class="warp">
         <header>
-            <h1><a href="#fep">FEP</a></h1>
-            <button class="openBtn" data-target="gnb">&#8651;</button>
+            <h1 class="head_logo">FEP</h1>
+            <button class="openBtn material-icons" data-target="menuArea">menu</button>
+            <button class="changeMode material-icons">settings_brightness</button>
+            <span></span>
         </header>
-        <div class="gnb">
-            <nav>
-                <li><a href="#info">Info</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contect">Contect</a></li>
-                <li>안홍범</li>
-                <li><a href="mailto:anbum8463@gmail.com">anbum8463@gmail.com</a></li>
-            </nav>
-            <button class="closeBtn">X</button>
+        <div class="menuArea">
+            <ul class="menuLists">
+                <li><a href="#part01">Info</a></li>
+                <li><a href="#part02">Projects</a></li>
+                <li><a href="#part03">Contect</a></li>
+            </ul>
+            <div class="info">
+                <ul>
+                    <li>안홍범/Hong Bum An</li>
+                    <li><a href="mailto:anbum8463@gmail.com">anbum8463@gmail.com</a></li>
+                </ul>
+            </div>
+            <button class="closeBtn material-icons" data-target="menuArea">clear</button>
         </div>
-        <div class="contents"></div>
+        <section class="containal">
+            <div class="firstPart">
+                <p class="greeting"><span>H</span><span>e</span><span>l</span><span>l</span><span>o</span></p>
+                <p class="eventClock"></p>
+                <p class="today"></p>
+            </div>
+            <div class="parts" id="part01">
+                <h2>Info</h2>
+                <dl class="mainList">
+                    <dt>Name</dt>
+                    <dd>안홍범 / Hong Bum An</dd>
+                    <dt>Born</dt>
+                    <dd>04.05.1992</dd>
+                    <dt>Skills</dt>
+                    <dd>
+                        <dl class="subLists">
+                            <dt>Strong</dt>
+                            <dd>HTML, CSS, JAVASCRIPT</dd>
+                            <dt>Knowledgeable</dt>
+                            <dd>Vue, Firebase, MySQL</dd>
+                        </dl>
+                    </dd>
+                    <dt>Experience</dt>
+                    <dd>Media Force Aliance / Seoul, Korea<br>(Aug.2018 - Present)</dd>
+                    <dt>Education</dt>
+                    <dd>2018 B. D. in New Media Design, University of Hanyang Cyber</dd>
+                </dl>
+            </div>
+            <div class="parts" id="part02">
+                <h2>Projects</h2>
+                <div class="projectLists">
+                    <ul>
+                        <li>
+                            <p class="tit">Untact Electronic Document Infrastructure</p>
+                            <p class="date">Sep/2020 - present(Dec/2020)</p>
+                            <p class="tit">Future Financial</p>
+                            <p class="date">Jul/2020 - Sep/2020</p>
+                            <p class="tit">Untact Account Opening</p>
+                            <p class="date">Mar/2020 - Jul/2020</p>
+                            <p class="tit">Future Financial</p>
+                            <p class="date">Dec/2018 - Feb/2020</p>
+                            <p class="tit">Fee-Bizz Responsive Pc,Mobile</p>
+                            <p class="date">Aug/2018 - Dec/2018</p>
+                            <p class="tit">Fee-Bizz Responsive Pc,Mobile</p>
+                            <p class="date">Aug/2018 - Dec/2018</p>
+                            <p class="tit">Smart Home IOT</p>
+                            <p class="date">Sep/2018 - Dec/2018</p>
+                            <p class="tit">Samsung wize</p>
+                            <p class="date">Aug/2018 - Sep/2018</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="parts" id="part03">
+                <h2>Contect</h2>
+                <ul class="contectLists">
+                    <li>anbum8463@gmail.com</li>
+                    <li>github.com/JaydenAn92</li>
+                </ul>
+            </div>
+        </section>
+        <footer>
+
+        </footer>
     </div>
 </body>
 </html>

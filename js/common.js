@@ -91,16 +91,14 @@ window.addEventListener('DOMContentLoaded', () => {
             element.style.overflow = "";
         });
         loopRemoveClassOn([el[0], 'on'])
-        console.log(el)
         
         el[0].forEach(element => {
-            console.log(element)
-            let eventTarget = element.firstElementChild.getAttribute('href')
-            let moveTarget = document.querySelector(eventTarget)
-            console.log(moveTarget)
-            window.scrollTo({top:moveTarget.offsetTop - el[4].offsetHeight, behavior:'smooth'})
+            element.addEventListener('click', () => {
+                let eventTarget = element.firstElementChild.getAttribute('href')
+                let moveTarget = document.querySelector(eventTarget)
+                window.scrollTo({top:moveTarget.offsetTop - el[4].offsetHeight, behavior:'smooth'})
+            })
         })
-        // let eventTargetData = 
     }
     const clickEvent = function(el, func, ...arr){
         if(el.length === undefined){
@@ -117,8 +115,6 @@ window.addEventListener('DOMContentLoaded', () => {
                     func(...arr)
                 })
             })
-        }else{
-            console.log('g')
         }
     }
     const scrollEvent = function(el, func, ...arr){

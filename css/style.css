@@ -52,14 +52,15 @@ button{
 }
 body *{box-sizing: border-box;}
 
-.wrap{margin: 0 auto; width: 100; overflow: hidden;}
-header{position: fixed; background-color: #fff; width: 100%; z-index: 1;}
+.wrap{margin: 0 auto; width: 100%; overflow: hidden; position: relative;}
+.wrap::after{content: ''; display: block; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background-image: url('../images/bg_main_w.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed; z-index: -1;}
+header{position: fixed; background-color: #fff; width: 100%; z-index: 1; opacity: 0.8;}
 header .head_logo {border-bottom: 1px solid darkgray; width: 100%; text-align: center; font-size: 32px; padding: 12px 0; font-weight: bold;}
 header span{display: block; width: 0%; height: 3px; background-color: rgba(185, 58, 58, 1);}
 header button{position: absolute; top: 15px;}
 header .openBtn{right: 20px;}
 header .changeMode{left: 20px;}
-.menuArea{display: none; position: absolute; background-color: rgba(0, 0, 0, 0.8); width: 100%; height: 100%; left: 0; top: 0; justify-content: center; align-items: center; flex-direction:  column; z-index: 100;}
+.menuArea{display: none; position: absolute; background-color: rgba(0, 0, 0, 0.8); width: 100%; height: 100vh; left: 0; top: 0; justify-content: center; align-items: center; flex-direction:  column; z-index: 100;}
 .menuArea button{position: absolute; right: 20px; top: 10px; font-weight: bold; color: #fff; font-size: 24px;}
 .menuArea li{opacity: 0; transform: translateY(100%);}
 .menuArea li.on{opacity: 1; transform: translateY(0%); transition: all; transition-duration: 0.5s;}
@@ -73,7 +74,7 @@ header .changeMode{left: 20px;}
 .menuLists li + li{margin-top: 10px;}
 .menuLists li a{display: block; color: #fff; font-weight: bold; font-size: 18px;}
 
-.containal h2 {color: rgba(185, 58, 58, 1); font-size: 18px; text-align: center; margin-bottom: 20px; font-weight: bold;}
+.containal h2 {color: rgba(185, 58, 58, 1); font-size: 24px; text-align: center; margin-bottom: 20px; font-weight: bold;}
 .firstPart{height: 300px; display: flex; justify-content: center; align-items: center; flex-direction: column;}
 .firstPart .today{font-weight: bold; font-size: 20px; text-align: center;}
 .firstPart .eventClock{font-weight: bold; font-size: 48px;}
@@ -102,15 +103,23 @@ header .changeMode{left: 20px;}
 .formArea form{text-align: center;}
 .formArea form label{display: block;}
 .formArea form button{display: inline-block;}
-.projectLists{padding-bottom: 30%;}
+/* .projectLists{padding-bottom: 30%;} */
 .projectLists ul{display: flex; flex-direction: row; flex-wrap: wrap; padding: 0 20px;}
-.projectLists ul li{flex: 1 1 100%; padding: 40% 10px 10px; border-radius: 10px; box-shadow: 4px 4px 6px darkgray; margin-top: 20px; opacity: 0; transform: translateY(100%); width: 100%;}
+.projectLists ul li{flex: 1 1 100%;  margin-top: 20px; opacity: 0; transform: translateY(100%); width: 100%;}
 .projectLists ul li.on{opacity: 1; transform: translateY(0%); transition: all; transition-duration: 0.5s; transition-timing-function: ease-in-out;}
 /* .projectLists ul li:nth-child(even){transform: translateY(150%); margin-left: 20px;}
 .projectLists ul li.on:nth-child(even){opacity: 1; transform: translateY(50%);} */
 .projectLists ul li.on:first-child{margin: 0;}
-
+.projectLists ul li a{display: block; padding: 40% 10px 10px; border-radius: 10px; box-shadow: 4px 4px 6px darkgray;}
+.projectLists ul li a:active{transform: translateX(2px) translateY(2px); transition: all; transition-duration: 0.2s;}
+.contectLists li{text-align: center;}
+.contectLists li + li{margin-top: 10px;}
+.contectLists li a{color: #000;}
+footer{padding: 40px 0 20px; text-align: center;}
 body.dark{color: #fff; background-color: #242424;}
 body.dark header {color: #fff; background-color: #242424;}
 body.dark header a{color: #fff;}
 body.dark header button{color: #fff;}
+body.dark .wrap::after{content: ''; display: block; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background-image: url('../images/bg_main_b.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed; z-index: -1;}
+body.dark .projectLists ul li a{color: #fff;}
+body.dark .contectLists a{color: #fff;}

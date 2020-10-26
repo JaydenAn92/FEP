@@ -71,7 +71,7 @@ header .changeMode{left: 20px;}
 
 .menuLists{display: flex; justify-content: center; align-items: center; flex-direction: column;}
 .menuLists li{flex-wrap: wrap; text-align: center;}
-.menuLists li + li{margin-top: 10px;}
+.menuLists li + li{margin-top: 30px;}
 .menuLists li a{display: block; color: #fff; font-weight: bold; font-size: 18px;}
 
 .containal h2 {color: rgba(185, 58, 58, 1); font-size: 24px; text-align: center; margin-bottom: 20px; font-weight: bold;}

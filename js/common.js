@@ -24,6 +24,16 @@ window.addEventListener('DOMContentLoaded', () => {
             element.classList.add(el[1])
         })
     }
+    const fixHeader = function(el){
+        if(window.scrollY > el[0].offsetHeight){
+            el[1].style.top = window.scrollY+'px';
+        }else if(window.scrollY <= el[0].offsetHeight){
+            el[1].style.top = 0;
+        }
+    }
+    const headerBar = function(el){
+        el[0].style.width = Math.floor(window.scrollY / (el[1].offsetHeight - window.innerHeight) * 100)+'%'
+    }
     const loopRemoveClassOn = function(el){
         el[0].forEach(element => {
             element.classList.remove(el[1])
@@ -46,12 +56,6 @@ window.addEventListener('DOMContentLoaded', () => {
             el.classList.remove('dark')
         }
     } 
-    const clickEvent = function(el, func, ...arr){
-        el.addEventListener('click', () => {
-            console.log(...arr)
-            func(...arr)
-        })
-    }
     const realToday = function(el){
         let yy = el[0].getFullYear();
         let mm = el[0].getMonth() + 1;
@@ -78,7 +82,51 @@ window.addEventListener('DOMContentLoaded', () => {
         if(seconds < 10){seconds = '0'+seconds}
         el[1].innerHTML = `${hours}:${minutes}<span>${seconds}${ampm}</span>`;
     }
-
+    const settingContainal = function(el){
+        el[0].style.paddingTop = el[1].offsetHeight+'px';
+    }
+    const moveScroll = function(el){
+        el[3].style.display = 'none';
+        [el[1], el[2]].forEach(element => {
+            element.style.overflow = "";
+        });
+        loopRemoveClassOn([el[0], 'on'])
+        console.log(el)
+        
+        el[0].forEach(element => {
+            console.log(element)
+            let eventTarget = element.firstElementChild.getAttribute('href')
+            let moveTarget = document.querySelector(eventTarget)
+            console.log(moveTarget)
+            window.scrollTo({top:moveTarget.offsetTop - el[4].offsetHeight, behavior:'smooth'})
+        })
+        // let eventTargetData = 
+    }
+    const clickEvent = function(el, func, ...arr){
+        if(el.length === undefined){
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                func(...arr)
+                console.log('0',el[0])    
+            })
+        }else if(el.length > 1){
+            el.forEach(element => {
+                element.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    console.log('1',el)    
+                    func(...arr)
+                })
+            })
+        }else{
+            console.log('g')
+        }
+    }
+    const scrollEvent = function(el, func, ...arr){
+        el.addEventListener('scroll', () => {
+            // console.log(...arr)
+            func(...arr)
+        })
+    }
     const openBtn = document.querySelector('.openBtn');
     const closeBtn = document.querySelector('.closeBtn');
     const Html = document.querySelector('html');
@@ -91,6 +139,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const dateElement = document.querySelector('.today');
     const clockElement = document.querySelector('.eventClock');
     const menuAreaEle = document.querySelectorAll('.menuArea li');
+    const menuListsEle = document.querySelectorAll('.menuLists li');
     const projectLists = document.querySelectorAll('.projectLists li');
     const parts = document.querySelectorAll('.parts');
     const greeting = document.querySelectorAll('.greeting span');
@@ -100,19 +149,30 @@ window.addEventListener('DOMContentLoaded', () => {
     // Loding Event
     let todayRun = realToday;
     let timeRun = realTime;
+    let headerRun = settingContainal;
     todayRun([date, dateElement])
     timeRun([date, clockElement])
+    headerRun([containal, header])
     setInterval(() => {
         timeRun([date, clockElement])
     }, 1000);
+    
+    // Scroll Event
+    let fixedHead = scrollEvent;
+    let MoveHeaderBar = scrollEvent;
+    fixedHead(window, fixHeader, [header, menuArea])
+    MoveHeaderBar(window, headerBar, [headerB, Body])
+    
+
     // Clisk Event
     let GnbOpen = clickEvent;
     let GnbClose = clickEvent;
     let ChangeMode = clickEvent;
+    let moveScrollRun = clickEvent;
     GnbOpen(openBtn, OpenGnb, [openBtn, Html, Body, menuAreaEle])
     GnbClose(closeBtn, CloseGnb, [closeBtn, Html, Body, menuAreaEle])
     ChangeMode(changeMode, DarkMode, Body)
-    
+    moveScrollRun(menuListsEle, moveScroll, [menuListsEle, Html, Body, menuArea, header])
     
     // setTimeout Event
     let greetingWords = loopAddClassOn;
@@ -121,7 +181,7 @@ window.addEventListener('DOMContentLoaded', () => {
     
     setTimeout(() => {
         greetingWords([greeting, 'on'])
-        greetingAnimate([greeting , 140])
+        greetingAnimate([greeting , 60])
         greetingTransition([greeting , 140])
     }, 1000);
 })

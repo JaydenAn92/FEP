@@ -26,6 +26,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	-webkit-overflow-scrolling: touch;
 }
 ol, ul, nav {
 	list-style: none;
@@ -50,7 +51,7 @@ button{
     background: none;
     border: none;
 }
-body *{box-sizing: border-box;}
+body *{box-sizing: border-box; -webkit-overflow-scrolling: touch;}
 
 .wrap{margin: 0 auto; width: 100%; overflow: hidden; position: relative;}
 .wrap::after{content: ''; display: block; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background-image: url('../images/bg_main_w.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed; z-index: -1;}
@@ -80,7 +81,7 @@ header .changeMode{left: 20px;}
 .firstPart .eventClock{font-weight: bold; font-size: 48px;}
 .firstPart .eventClock span{font-weight: bold; font-size: 20px;}
 .firstPart .greeting span{font-weight: bold; font-size: 36px; display: inline-block; transform: translateX(300px) scale(0.5); opacity: 0;}
-.firstPart .greeting span.on{animation-duration: 1.5s; animation-name: greeting; animation-fill-mode: none; transform: translateX(0%) scale(1); opacity: 1; transition: all;}
+.firstPart .greeting span.on{animation-duration: 1.5s; animation-name: greeting; animation-fill-mode: forwards; transform: translateX(0%) scale(1); opacity: 1; transition: all;}
 @keyframes greeting{
 	0%{
 		transform: translateX(300px) scale(0.5);
@@ -110,8 +111,24 @@ header .changeMode{left: 20px;}
 /* .projectLists ul li:nth-child(even){transform: translateY(150%); margin-left: 20px;}
 .projectLists ul li.on:nth-child(even){opacity: 1; transform: translateY(50%);} */
 .projectLists ul li.on:first-child{margin: 0;}
-.projectLists ul li a{display: block; padding: 40% 10px 10px; border-radius: 10px; box-shadow: 4px 4px 6px darkgray;}
-/* .projectLists ul li:nth-child(1) a{background-image: url('../images/shcard01.png'); background-repeat: no-repeat; background-size: 130% auto} */
+.projectLists ul li a{display: block; padding: 40% 10px 10px; border-radius: 10px; box-shadow: 4px 4px 6px darkgray; background-position: 0% center;}
+.projectLists ul li span{background: rgba(255, 255, 255, 0.7); font-weight: bold; padding: 0 4px;display: inline-block;}
+.projectLists ul li.on a{animation-duration: 6s; animation-name: movebackground;  animation-direction: alternate; animation-iteration-count: infinite;}
+@keyframes movebackground{
+	0%{
+		background-position: 0% 0%;
+	}
+	100%{
+		background-position: 100% 100%;
+	}
+}
+.projectLists ul li:nth-child(1) a{background-image: url('../images/moveimg01.jpg'); background-repeat: no-repeat; background-size: 130% auto}
+.projectLists ul li:nth-child(2) a{background-image: url('../images/moveimg02.png'); background-repeat: no-repeat; background-size: 130% auto}
+.projectLists ul li:nth-child(3) a{background-image: url('../images/moveimg03.png'); background-repeat: no-repeat; background-size: 130% auto}
+.projectLists ul li:nth-child(4) a{background-image: url('../images/moveimg04.png'); background-repeat: no-repeat; background-size: 130% auto}
+.projectLists ul li:nth-child(5) a{background-image: url('../images/moveimg05.png'); background-repeat: no-repeat; background-size: 130% auto}
+.projectLists ul li:nth-child(6) a{background-image: url('../images/moveimg06.png'); background-repeat: no-repeat; background-size: 130% auto}
+.projectLists ul li:nth-child(7) a{background-image: url('../images/moveimg07.gif'); background-repeat: no-repeat; background-size: 130% auto}
 .projectLists ul li a:active{transform: translateX(2px) translateY(2px); transition: all; transition-duration: 0.2s;}
 .contectLists li{text-align: center;}
 .contectLists li + li{margin-top: 10px;}

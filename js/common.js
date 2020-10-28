@@ -139,6 +139,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const projectLists = document.querySelectorAll('.projectLists li');
     const parts = document.querySelectorAll('.parts');
     const greeting = document.querySelectorAll('.greeting span');
+    const moveBackground = document.querySelectorAll('.projectLists li a');
 
     const date = new Date;
 
@@ -174,10 +175,12 @@ window.addEventListener('DOMContentLoaded', () => {
     let greetingWords = loopAddClassOn;
     let greetingAnimate = loopStyleAnimate;
     let greetingTransition = loopStyleTransition;
+    let test1 = loopStyleAnimate;
     
     setTimeout(() => {
         greetingWords([greeting, 'on'])
         greetingAnimate([greeting , 60])
         greetingTransition([greeting , 140])
+        // test1([moveBackground , 5000])
     }, 1000);
 })

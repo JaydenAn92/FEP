@@ -1,5 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {    
     const OpenGnb = function(el){
+        // console.log(el)
         let targetData = el[0].getAttribute('data-target');
         let targetEl = document.querySelector('.'+targetData);
         targetEl.style.display = 'flex';
@@ -20,6 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
         loopRemoveClassOn([el[3], 'on'])
     } 
     const loopAddClassOn = function(el){
+        // console.log(el[0])
         el[0].forEach(element => {
             element.classList.add(el[1])
         })
@@ -91,6 +93,7 @@ window.addEventListener('DOMContentLoaded', () => {
             element.style.overflow = "";
         });
         loopRemoveClassOn([el[0], 'on'])
+        console.log([el[0]])
         
         el[0].forEach(element => {
             element.addEventListener('click', () => {
@@ -100,14 +103,36 @@ window.addEventListener('DOMContentLoaded', () => {
             })
         })
     }
+    const addClassProjects = function(el){
+        for(let i = 0; i < el.length; i++){
+            setTimeout(() => {
+                loopAddClassOn([[el[i]], 'active'])
+            }, i*4000);
+            // console.log(el[el.length-1])
+            // if(el[el.length-1].incould){}
+        }
+    }
+    const scrollPartadd = function(el){
+        let spots = [];
+        // console.log(el[0].length)
+        let viewHeight = window.innerHeight
+        console.log(el)
+        for(let i = 0; i < el[0].length; i++){
+            spots.push(el[0][i].offsetTop)
+            if(window.scrollY  + viewHeight > spots[i]){
+                el[0][i].classList.add(el[1])
+            }
+        }
+        
+    }
     const clickEvent = function(el, func, ...arr){
-        if(el.length === undefined){
+        if(typeof el.length === 'undefined'){
             el.addEventListener('click', (e) => {
                 e.preventDefault();
                 func(...arr)
-                console.log('0',el[0])    
+                console.log('0',el)    
             })
-        }else if(el.length > 1){
+        }else if(typeof el.length === 'number'){
             el.forEach(element => {
                 element.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -147,6 +172,8 @@ window.addEventListener('DOMContentLoaded', () => {
     let todayRun = realToday;
     let timeRun = realTime;
     let headerRun = settingContainal;
+    let moveBackImg = addClassProjects;
+    moveBackImg(moveBackground)
     todayRun([date, dateElement])
     timeRun([date, clockElement])
     headerRun([containal, header])
@@ -157,8 +184,10 @@ window.addEventListener('DOMContentLoaded', () => {
     // Scroll Event
     let fixedHead = scrollEvent;
     let MoveHeaderBar = scrollEvent;
+    let scrollPartClass = scrollEvent;
     fixedHead(window, fixHeader, [header, menuArea])
     MoveHeaderBar(window, headerBar, [headerB, Body])
+    scrollPartClass(window, scrollPartadd, [parts, 'on'])
     
 
     // Clisk Event

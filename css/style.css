@@ -100,7 +100,11 @@ header .changeMode{left: 20px;}
 .mainList{display: flex; flex-direction: row; flex-wrap: wrap;}
 .mainList > dt{flex: 1 1 30%; font-weight: bold; text-align: left; padding-left: 20px; font-size: 14px;}
 .mainList > dd{flex: 1 1 70%; text-align: left; padding: 0 0 20px 10px; font-size: 14px;}
+
+.parts{opacity: 0; transform: translateY(20%);}
+.parts.on{opacity: 1; transform: translateY(0); transition: all; transition-duration: 0.8s; transition-timing-function: ease-in-out;}
 .parts + .parts{margin-top: 20px;}
+
 .formArea form{text-align: center;}
 .formArea form label{display: block;}
 .formArea form button{display: inline-block;}
@@ -113,7 +117,7 @@ header .changeMode{left: 20px;}
 .projectLists ul li.on:first-child{margin: 0;}
 .projectLists ul li a{display: block; padding: 40% 10px 10px; border-radius: 10px; box-shadow: 4px 4px 6px darkgray; background-position: 0% center;}
 .projectLists ul li span{background: rgba(255, 255, 255, 0.7); font-weight: bold; padding: 0 4px;display: inline-block;}
-.projectLists ul li.on a{animation-duration: 6s; animation-name: movebackground;  animation-direction: alternate; animation-iteration-count: infinite;}
+.projectLists ul li.on a.active{animation-duration: 6s; animation-name: movebackground;  animation-direction: alternate; animation-iteration-count: infinite;}
 @keyframes movebackground{
 	0%{
 		background-position: 0% 0%;

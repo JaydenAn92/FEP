@@ -92,33 +92,34 @@ window.addEventListener('DOMContentLoaded', () => {
         [el[1], el[2]].forEach(element => {
             element.style.overflow = "";
         });
-        loopRemoveClassOn([el[0], 'on'])
-        console.log([el[0]])
+        loopRemoveClassOn([el[5], 'on'])
         
         el[0].forEach(element => {
             element.addEventListener('click', () => {
+                console.log('a')
                 let eventTarget = element.firstElementChild.getAttribute('href')
                 let moveTarget = document.querySelector(eventTarget)
                 window.scrollTo({top:moveTarget.offsetTop - el[4].offsetHeight, behavior:'smooth'})
             })
         })
     }
-    const addClassProjects = function(el){
-        for(let i = 0; i < el.length; i++){
-            setTimeout(() => {
-                loopAddClassOn([[el[i]], 'active'])
-            }, i*4000);
-            // console.log(el[el.length-1])
-            // if(el[el.length-1].incould){}
-        }
-    }
+    // const addClassProjects = function(el){
+    //     for(let i = 0; i < el.length; i++){
+    //         setTimeout(() => {
+    //             loopAddClassOn([[el[i]], 'active'])
+    //         }, i*4000);
+    //         // console.log(el[el.length-1])
+    //         // if(el[el.length-1].incould){}
+    //     }
+    // }
     const scrollPartadd = function(el){
         let spots = [];
         // console.log(el[0].length)
         let viewHeight = window.innerHeight
-        console.log(el)
+        // console.log(el)
         for(let i = 0; i < el[0].length; i++){
-            spots.push(el[0][i].offsetTop)
+            spots.push(el[0][i].offsetTop + el[0][i].offsetParent.offsetTop)
+            console.log(el[0][i],el[0][i].offsetParent.offsetTop)
             if(window.scrollY  + viewHeight > spots[i]){
                 el[0][i].classList.add(el[1])
             }
@@ -130,13 +131,12 @@ window.addEventListener('DOMContentLoaded', () => {
             el.addEventListener('click', (e) => {
                 e.preventDefault();
                 func(...arr)
-                console.log('0',el)    
             })
         }else if(typeof el.length === 'number'){
             el.forEach(element => {
                 element.addEventListener('click', (e) => {
                     e.preventDefault();
-                    console.log('1',el)    
+                    // console.log('1',el)    
                     func(...arr)
                 })
             })
@@ -172,11 +172,13 @@ window.addEventListener('DOMContentLoaded', () => {
     let todayRun = realToday;
     let timeRun = realTime;
     let headerRun = settingContainal;
-    let moveBackImg = addClassProjects;
-    moveBackImg(moveBackground)
+    // let moveBackImg = addClassProjects;
+    let moveScrollRunLoad = moveScroll
+    // moveBackImg(moveBackground)
     todayRun([date, dateElement])
     timeRun([date, clockElement])
     headerRun([containal, header])
+    moveScrollRunLoad([menuListsEle, Html, Body, menuArea, header, menuAreaEle])
     setInterval(() => {
         timeRun([date, clockElement])
     }, 1000);
@@ -185,9 +187,11 @@ window.addEventListener('DOMContentLoaded', () => {
     let fixedHead = scrollEvent;
     let MoveHeaderBar = scrollEvent;
     let scrollPartClass = scrollEvent;
+    let scrollPartClass02 = scrollEvent;
     fixedHead(window, fixHeader, [header, menuArea])
     MoveHeaderBar(window, headerBar, [headerB, Body])
     scrollPartClass(window, scrollPartadd, [parts, 'on'])
+    scrollPartClass02(window, scrollPartadd, [projectLists, 'on'])
     
 
     // Clisk Event
@@ -195,10 +199,10 @@ window.addEventListener('DOMContentLoaded', () => {
     let GnbClose = clickEvent;
     let ChangeMode = clickEvent;
     let moveScrollRun = clickEvent;
+    moveScrollRun(menuListsEle, moveScroll, [menuListsEle, Html, Body, menuArea, header, menuAreaEle])
     GnbOpen(openBtn, OpenGnb, [openBtn, Html, Body, menuAreaEle])
     GnbClose(closeBtn, CloseGnb, [closeBtn, Html, Body, menuAreaEle])
     ChangeMode(changeMode, DarkMode, Body)
-    moveScrollRun(menuListsEle, moveScroll, [menuListsEle, Html, Body, menuArea, header])
     
     // setTimeout Event
     let greetingWords = loopAddClassOn;

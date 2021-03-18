@@ -241,7 +241,8 @@
             flex-wrap: wrap; 
             justify-content: center; 
             align-items: center; 
-            gap: clamp(6px, 2.5vw, 8px);
+            margin: clamp(-6px, -2.5vw, -8px) 0 0 clamp(-6px, -2.5vw, -8px);
+            /* gap: clamp(6px, 2.5vw, 8px); */
             padding: 0 0.5em;
         }
 
@@ -251,6 +252,12 @@
             float: none; 
             clear: both; 
             padding-bottom: 5px;
+            
+        }
+
+        .problemList li{
+            padding: clamp(6px, 2.5vw, 8px) 0 0 clamp(6px, 2.5vw, 8px);
+            text-align: center;
         }
 
         .problemList ul:last-child::after{

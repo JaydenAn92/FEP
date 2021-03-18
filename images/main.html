@@ -646,10 +646,12 @@
                 });
             }
 
+            // 키보드 엔터 keycode 1
             var enterKey = function(el){
                 el.addEventListener('keyup', function() {
-                    el.blur();
-                    // alert('a');
+                    if (window.event.keyCode === 13) {
+                        el.blur();
+                    }
                 })
             }
             

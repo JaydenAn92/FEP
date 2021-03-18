@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">          
+    <style>
+        * {
+            font-family: "맑은 고딕", "Malgun Gothic", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", sans-serif !important
+        }
+
+        html{
+            height: 100%;
+        }
+
+        body{
+            margin: 0; 
+            padding: 0; 
+            height: 100%;
+        }
+
+        main{
+            height: 100%; 
+            position: relative;
+        }
+
+        body *{
+            box-sizing: border-box; 
+            font-family: "애플 SD 산돌고딕 Neo" !important
+        }
+
+        h1,h2,p{
+            margin: 0;
+        }
+
+        ul{
+            margin: 0; 
+            padding: 0;
+        }
+
+        li{
+            list-style: none;
+        }
+
+        a{
+            color: #000000; 
+            text-decoration: none; 
+            cursor: pointer;
+        }
+
+        button{
+            background: none; 
+            border: none; 
+            margin: 0; 
+            padding: 0;
+        }
+
+        input{
+            border: none;
+        }
+
+        input::placeholder{
+            font-size: 13px; 
+            color: #C8C8C8;
+        }
+
+        img {
+            margin: 0 auto; 
+            width: 60px; 
+            height: auto;
+        }
+
+        /* contents 03-12 수정 */
+
+        main{
+            position: relative; 
+            left: 0; 
+            top: 0;  
+            height: 100%;
+        }
+
+        .dim{
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0, 0, 0, 0.5); 
+            position: absolute; 
+            left: 0; 
+            top: 0;
+        }
+
+        .popup{
+            position: fixed; 
+            left: 0; 
+            top: 0; 
+            z-index: 1; 
+            width: 100%; 
+            height: 100%;  
+            overflow: hidden; 
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+        }
+
+        .contents{
+            max-width: clamp(260px, 87.8125vw, 313px); 
+            width: 100%; 
+            overflow: hidden; 
+            background: #ffffff; 
+            border-radius: 10px; 
+            padding: clamp(26px, 8vw, 30px) 0 clamp(14px, 5.625vw, 18px); 
+            position: relative; 
+            text-align: center;
+        }
+
+        /* .contents{
+            min-width: 228px; 
+            overflow: hidden; 
+            background: #ffffff; 
+            border-radius: 10px; 
+            padding: clamp(16px, 8vw, 30px) clamp(20px, 6.93vw, 26px) 18px; 
+            position: relative; 
+            text-align: center;
+        } */
+
+        .contents.style02{
+            background: #ffffff; 
+            border-radius: 10px; 
+            padding: clamp(30px, 9.3vw, 35px) 0 0; 
+            position: relative;
+        }
+
+        .contents *{
+            text-align: center;
+        }
+
+        .contents > *{
+            text-align: center; 
+            padding: 0 clamp(15px, 5.3125vw, 17px) 0;
+        }
+
+        .textArea p{
+            font-size: clamp(16px, 6.25vw, 20px);  
+            line-height: clamp(28px, 8.79vw, 33px); 
+            padding-top: clamp(14px, 4.8vw, 18px);
+        }
+
+        .style01 .textArea p{
+            font-size: clamp(17px, 5.3125vw, 19px);  
+            /* line-height: clamp(28px, 8.79vw, 33px);  */
+            padding-top: 1px;
+        }
+
+        .starArea {
+            display: flex; 
+        }
+
+        /* .style01 .starArea {
+            padding: clamp(2px, 1.6vw, 6px) clamp(20px, 6.93vw, 26px) 0; 
+        } */
+
+        /* .starArea {
+            padding: clamp(14px, 4.8vw, 18px) clamp(20px, 6.93vw, 26px) 0; 
+            margin: 0 -26px; 
+            display: inline-block;
+        } */
+
+        /* .style01 .starArea {
+            padding: clamp(2px, 1.6vw, 6px) clamp(20px, 6.93vw, 26px) 0; 
+            margin: 0 -26px;
+        } */
+
+        /* .starArea ul{dis} */
+
+        .starArea ul {
+            width: 100%; 
+            display: flex; 
+            justify-content: center; 
+            padding-top: clamp(12px, 6vw, 16px); 
+            padding-bottom: clamp(8px, 3.4375vw, 11px);
+        }
+
+        .starArea ul::after{
+            content: ''; 
+            display: block; 
+            clear: both; 
+            float: none;
+        }
+
+        /* .starArea ul{
+            display: flex; 
+            justify-content:center; 
+            align-items: center; 
+            gap: 6%; 
+            width: clamp(180px, 64.26vw, 241px);
+        } */
+
+        .starArea ul li{
+            float: left;
+        }
+
+        .starArea ul li + li{
+            margin-left: clamp(12px, 6vw, 16px);
+        }
+
+        .starArea ul li span{
+            display: block;
+        }
+
+        .starArea ul svg{
+            width: clamp(32px, 10vw, 36px);
+        }
+
+        .needsbox{
+            display: none; 
+            padding: 0;
+        }
+
+        .commnetbox{
+            padding: 0 clamp(15px, 5.3125vw, 17px)
+        }
+
+        .question{
+            padding-top: clamp(10px, 3.75vw, 12px);
+        }
+
+        .question p{
+            font-size: clamp(13px, 4.0625vw, 15px); 
+            font-weight: 500; 
+            letter-spacing: 0.01em;
+        }
+
+        .problemList {
+            padding: clamp(13px, 4.6875vw, 15px) 0px 0; 
+            text-align: center;
+        }
+
+        .problemList ul{
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            align-items: center; 
+            gap: clamp(6px, 2.5vw, 8px);
+            padding: 0 0.5em;
+        }
+
+        .problemList ul::after{
+            content: ''; 
+            display: block; 
+            float: none; 
+            clear: both; 
+            padding-bottom: 5px;
+        }
+
+        .problemList ul:last-child::after{
+            content: ''; 
+            display: block; 
+            float: none; 
+            clear: both; 
+            height: 0; 
+            padding: 0;
+        }
+
+        .problemList li button{
+            /* line-height: clamp(21px, 7.18749vw, 23px); 
+            padding: 0 clamp(6px, 2.66vw, 10px);  */
+            padding: 0.5em 0.8em 0.45em;
+            font-weight: 500; 
+            color: #9C9C9C; 
+            border: 1px solid #DCDCDC; 
+            border-radius: 18px; 
+            font-size: clamp(11px, 3.4375vw, 12px);
+            /* font-size: 0.7em;  */
+            letter-spacing: -0.05em;
+        }
+        /* letter-spacing은 디바이스 테스트 후 변경이 필요하면 수정 */
+
+        .problemList li.on button{
+            color: #fff; 
+            font-weight: 500; 
+            border: 1px solid #FF4100; 
+            background-color: #FF4100;
+        }
+
+        .comment{
+            padding-top: clamp(10px, 4.26vw, 16px);
+        }
+
+        /* .comment.full{
+            width: 100%;padding: clamp(10px, 4.26vw, 16px) 0 0;
+        } */
+
+        .comment input[type="text"]{
+            padding: clamp(11px, 3.75vw, 13px); 
+            width: 100%; 
+            border: 1px solid #DCDCDC; 
+            border-radius: 4px; 
+            text-align: left; 
+            font-size: clamp(11px, 3.4375vw, 13px) 
+        }
+
+        .comment input[type="text"]::placeholder{
+            font-size: clamp(11px, 3.4375vw, 13px) 
+        }
+
+        .comment input + .submitBtn{
+            display: block;
+        }
+
+        .comment input:focus + .submitBtn{
+            display: none;
+        }
+
+        .submitBtn{
+            padding-top: clamp(8px, 3.125vw, 10px);
+        }
+
+        .submitBtn button{
+            line-height: clamp(36px, 13.33vw, 50px); 
+            background: #000; 
+            width: 100%; 
+            border-radius: 4px; 
+            color: #fff; 
+            font-size: clamp(13px, 4.0625vw, 15px);
+        }
+
+        .finish_comment{
+            display: none;
+            padding: 0;
+        }
+
+        .finish_comment p{
+            font-size: clamp(11px, 3.46vw, 13px); 
+            line-height: 21px; 
+            color: rgba(0, 0, 0, 0.7); 
+            padding-top: clamp(6px, 2.5vw, 8px);
+        }
+
+        .nextThing{
+            padding: 0; 
+            display: none;
+        }
+
+        .nextThing ul::after{
+            content: ''; 
+            display: block; 
+            float: none; 
+            clear: both;
+        }
+
+        .nextThing ul{
+            padding-top: clamp(16px, 5.9375vw, 19px);
+        }
+
+        .nextThing ul li{
+            float: left; 
+            width: 50%; 
+            border-top: 1px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .nextThing .type01 button{
+            line-height: clamp(42px, 14.6875vw, 47px); 
+            font-size: clamp(11px, 4.0625vw, 13px); 
+            color: rgba(0, 0, 0, 0.4); 
+            display: block; 
+            text-align: center; 
+            width: 100%;
+        } 
+
+        .nextThing .type02 a{
+            line-height: clamp(42px, 14.6875vw, 47px); 
+            font-size: clamp(11px, 4.0625vw, 13px); 
+            color: #fff; 
+            background: #000; 
+            display: block; 
+            font-weight: 600;
+        }
+
+        .close_btn{
+            position: absolute; 
+            right: 10px; 
+            top: 10px; 
+            padding: 0;
+        }
+
+        .close_btn button{
+            font-size: 0; 
+            width: 26px;
+            height: 26px; 
+            background: url(http://d1mccvietm6wep.cloudfront.net/spoon/close.png)no-repeat; 
+            background-position: center; 
+            background-size: 26px;
+        }
+
+        /* 아이폰 5S / padding 주세요 */
+        
+        /* @media screen and (max-width: 320px) {
+            .problemList li button{
+            line-height: clamp(21px, 7.18749vw, 23px); 
+            font-size: 0.6em; 
+            letter-spacing: -0.05em;
+        }
+        } */
+
+        /* .second{display: none;}
+        .third{display: none} */
+
+        /* 필요한 slick CSS */
+
+        .popup .slick-track{
+            display: flex; 
+            align-items: center;
+        }
+
+        .popup .slick-slide{
+            display: flex; 
+            justify-content: center;
+        }
+
+    
+    </style>
+    
+    <title>Spoon_App_Rating</title>
+</head>
+<body>
+    <main>
+        <!-- popup -->
+        <div class="dim"></div>
+        <div class="popup">
+            <div class="contents">
+                <div class="imgarea">
+                    <img src="http://d1mccvietm6wep.cloudfront.net/spoon/default.png" alt=""><!-- 별점에 따른 이미지 변경-->
+                </div>
+                <div class="textArea">
+                    <p><strong>스푼</strong>이 마음에 드시나요?</p>
+                </div>
+                <div class="finish_comment">
+                    <p>더 나은 서비스를 위해 노력하는 스푼이 될게요.<br/>
+                        스토어에 칭찬 한마디 남겨주시겠어요?</p>
+                </div>
+                
+                <div class="starArea">
+                    <ul>
+                        <li>
+                            <span>
+                                <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- fill 코드 번호변경 on:"#FFC400" / off:"#E8E8E8"-->
+                                    <path d="M17.3819 1.67541C17.7535 0.524043 19.3824 0.52404 19.754 1.67541L23.1722 12.2683C23.3386 12.784 23.8191 13.133 24.361 13.1318L35.4961 13.1075C36.7063 13.1049 37.2097 14.6549 36.2288 15.3638L27.2073 21.8844C26.7679 22.202 26.5843 22.7672 26.753 23.2824L30.2169 33.8582C30.5935 35.0081 29.2756 35.966 28.2981 35.253L19.3024 28.6909C18.8648 28.3717 18.2711 28.3717 17.8335 28.6909L8.83779 35.253C7.86025 35.966 6.54237 35.0081 6.91899 33.8582L10.3829 23.2824C10.5516 22.7672 10.3679 22.202 9.92858 21.8844L0.907068 15.3638C-0.0737734 14.6549 0.42961 13.1049 1.63983 13.1075L12.7749 13.1318C13.3167 13.133 13.7973 12.784 13.9637 12.2683L17.3819 1.67541Z" fill="#E8E8E8"></path>
+                                </svg>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.3819 1.67541C17.7535 0.524043 19.3824 0.52404 19.754 1.67541L23.1722 12.2683C23.3386 12.784 23.8191 13.133 24.361 13.1318L35.4961 13.1075C36.7063 13.1049 37.2097 14.6549 36.2288 15.3638L27.2073 21.8844C26.7679 22.202 26.5843 22.7672 26.753 23.2824L30.2169 33.8582C30.5935 35.0081 29.2756 35.966 28.2981 35.253L19.3024 28.6909C18.8648 28.3717 18.2711 28.3717 17.8335 28.6909L8.83779 35.253C7.86025 35.966 6.54237 35.0081 6.91899 33.8582L10.3829 23.2824C10.5516 22.7672 10.3679 22.202 9.92858 21.8844L0.907068 15.3638C-0.0737734 14.6549 0.42961 13.1049 1.63983 13.1075L12.7749 13.1318C13.3167 13.133 13.7973 12.784 13.9637 12.2683L17.3819 1.67541Z" fill="#E8E8E8"></path>
+                                </svg>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.3819 1.67541C17.7535 0.524043 19.3824 0.52404 19.754 1.67541L23.1722 12.2683C23.3386 12.784 23.8191 13.133 24.361 13.1318L35.4961 13.1075C36.7063 13.1049 37.2097 14.6549 36.2288 15.3638L27.2073 21.8844C26.7679 22.202 26.5843 22.7672 26.753 23.2824L30.2169 33.8582C30.5935 35.0081 29.2756 35.966 28.2981 35.253L19.3024 28.6909C18.8648 28.3717 18.2711 28.3717 17.8335 28.6909L8.83779 35.253C7.86025 35.966 6.54237 35.0081 6.91899 33.8582L10.3829 23.2824C10.5516 22.7672 10.3679 22.202 9.92858 21.8844L0.907068 15.3638C-0.0737734 14.6549 0.42961 13.1049 1.63983 13.1075L12.7749 13.1318C13.3167 13.133 13.7973 12.784 13.9637 12.2683L17.3819 1.67541Z" fill="#E8E8E8"></path>
+                                </svg>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.3819 1.67541C17.7535 0.524043 19.3824 0.52404 19.754 1.67541L23.1722 12.2683C23.3386 12.784 23.8191 13.133 24.361 13.1318L35.4961 13.1075C36.7063 13.1049 37.2097 14.6549 36.2288 15.3638L27.2073 21.8844C26.7679 22.202 26.5843 22.7672 26.753 23.2824L30.2169 33.8582C30.5935 35.0081 29.2756 35.966 28.2981 35.253L19.3024 28.6909C18.8648 28.3717 18.2711 28.3717 17.8335 28.6909L8.83779 35.253C7.86025 35.966 6.54237 35.0081 6.91899 33.8582L10.3829 23.2824C10.5516 22.7672 10.3679 22.202 9.92858 21.8844L0.907068 15.3638C-0.0737734 14.6549 0.42961 13.1049 1.63983 13.1075L12.7749 13.1318C13.3167 13.133 13.7973 12.784 13.9637 12.2683L17.3819 1.67541Z" fill="#E8E8E8"></path>
+                                </svg>
+                            </span>
+                        </li>
+                        <li>
+                            <span>
+                                <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.3819 1.67541C17.7535 0.524043 19.3824 0.52404 19.754 1.67541L23.1722 12.2683C23.3386 12.784 23.8191 13.133 24.361 13.1318L35.4961 13.1075C36.7063 13.1049 37.2097 14.6549 36.2288 15.3638L27.2073 21.8844C26.7679 22.202 26.5843 22.7672 26.753 23.2824L30.2169 33.8582C30.5935 35.0081 29.2756 35.966 28.2981 35.253L19.3024 28.6909C18.8648 28.3717 18.2711 28.3717 17.8335 28.6909L8.83779 35.253C7.86025 35.966 6.54237 35.0081 6.91899 33.8582L10.3829 23.2824C10.5516 22.7672 10.3679 22.202 9.92858 21.8844L0.907068 15.3638C-0.0737734 14.6549 0.42961 13.1049 1.63983 13.1075L12.7749 13.1318C13.3167 13.133 13.7973 12.784 13.9637 12.2683L17.3819 1.67541Z" fill="#E8E8E8"></path>
+                                </svg>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="needsbox">
+                    <div class="question">
+                        <p>어떤 점이 불편하셨나요?</p>
+                    </div>
+                    <div class="problemList">
+                        <ul>
+                            <!-- li 선택시 class on 추가 해지시 on 삭제 -->
+                            <li><button>청소년 제한 문제</button></li>
+                            <li><button>라이브 렉/튕김 문제</button></li> 
+                            <li><button>라이브콜 기능</button></li>
+                            <li><button>직관적이지 못함</button></li>
+                            <li><button>서비스 장애</button></li>
+                            <li><button>신고 및 제재</button></li>
+                            <li><button>환전수수료 불만</button></li>
+                            <li><button>고객센터 미흡</button></li>
+                            <li><button>캐스트 업로드 기능</button></li>
+                            <li><button>19금 콘텐츠/이슈</button></li>
+                            <li><button>기타</button></li>
+                        </ul>
+                    </div>
+                    <div class="commnetbox">
+                        <div class="comment">
+                            <input type="text" inputmode="text" placeholder="자유롭게 의견을 보내주세요."> 
+                            <div class="submitBtn">
+                                <button type="submit">제출하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nextThing">
+                    <ul>
+                        <li class="type01"><button class="close" onclick="location.href='appboy://close'">나중에 할래요</button></li>
+                        <li class="type02"><a href="javascript:;">스토어 가기</a></li>
+                    </ul>
+                </div>
+                <div class="close_btn">
+                    <button onclick="location.href='appboy://close'">close</button>
+                </div>
+            </div>
+        </div>
+        <!-- // popup -->
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        $(function() {       
+            var eventProperties = undefined;
+            var ratings = undefined;
+            var problems = [];
+
+            // 스토어링크 변경 - 수정해야 할 부분 (시작)
+            var storeLink = "___ 스토어 링크를 넣어주시면 됩니다 (ex. 원링크) ____";            
+            // 스토어링크 변경 - 수정해야 할 부분 (끝)
+
+            // 커스텀 이벤트명/이벤트속성명 변경 - 수정해야 할 부분 (시작)
+            var eventName = "app rated_{{campaign.${name}}}";
+            var eventProperty1Name = "ratings";
+            var eventProeprty2Name = "problems";
+            // 커스텀 이벤트명/이벤트속성명 변경 - 수정해야 할 부분 (끝)
+
+            $('li.type02').on('click', function() {
+                window.open(storeLink);
+            });
+
+            // 별점에 따른 변화
+            var clickStar = function(el){
+                el.forEach(function(currentValue, index, arr) {
+                    var emo = document.querySelector('.imgarea img');
+                    var finishComment = document.querySelector('.finish_comment');
+                    var finishBtns = document.querySelector('.nextThing');
+                    var textArea = document.querySelector('.textArea');
+                    var contentsBox = document.querySelector('.contents');
+                    var starBox = document.querySelector('.starArea');
+                    var needsBox = document.querySelector('.needsbox');
+                    currentValue.addEventListener('click', function(){
+                        var _this = currentValue.querySelector('path')
+                        if (_this.attributes.fill.value = '#E8E8E8') { // 회색일때만
+                            for (var j = 0; j < arr.length; j++){ // 별 초기화
+                                var defaultStar = el[j].querySelector('path');
+                                defaultStar.attributes.fill.value = '#E8E8E8';
+                            }
+                            for (var i = 0; i < index + 1; i++){ // 별채우기
+                                var star = el[i].querySelector('path');
+                                star.attributes.fill.value = '#FFC400';
+                            }
+                        }
+
+                        ratings = index + 1;
+
+                        if (2 < index) {
+                            // WORKFLOW : Positive
+                            emo.attributes.src.value = 'http://d1mccvietm6wep.cloudfront.net/spoon/be_good.png';// 이미지 경로
+                            finishComment.style.display = 'block';
+                            finishBtns.style.display = 'block';
+                            starBox.style.display = 'none';
+                            needsBox.style.display = 'none';
+                            contentsBox.classList.add('style02');
+                            finishComment.firstElementChild.innerHTML = `더 나은 서비스를 위해 노력하는 스푼이 될게요.<br/>스토어에 칭찬 한마디 남겨주시겠어요?`
+                            textArea.firstElementChild.innerHTML = `<strong>소중한 의견</strong> 감사합니다!`;
+                        } else {
+                            // WORKFLOW : Negative
+                            needsBox.style.display = 'block';
+                            if (index < 2) {
+                                emo.attributes.src.value = 'http://d1mccvietm6wep.cloudfront.net/spoon/be_bad.png';// 이미지 경로
+                                textArea.firstElementChild.innerHTML = `<strong>"별로에요"</strong>`;
+                            } else{
+                                emo.attributes.src.value = 'http://d1mccvietm6wep.cloudfront.net/spoon/be_ok.png';// 이미지 경로
+                                textArea.firstElementChild.innerHTML = `<strong>"그냥 그래요"</strong>`;
+                            }
+                        }
+                    })
+                });
+            }
+
+            // 불편한점
+            var clickNeeds = function(el){
+                el.forEach(function(currentValue, index, arr){
+                    currentValue.addEventListener('click', function(){
+                        var currentLI = currentValue.parentElement;
+                        if (currentLI.className === 'on') { //선택시
+                            currentLI.classList.remove('on');
+                        } else {//비선택시
+                            currentLI.classList.add('on');
+                        }
+                    })
+                })
+            }
+
+            // input focus event
+            var changeInp = function(el) {
+                var problemBox = document.querySelector('.problemList');
+                el.addEventListener('focus', function() {
+                    problemBox.style.display = 'none';
+                    el.scrollIntoView();
+                });
+                el.addEventListener('blur', function() {
+                    problemBox.style.display = 'block';
+                });
+            }
+
+            // button click event
+            var submitContent = function(el){
+                el.addEventListener('click', function() {
+                    var emo = document.querySelector('.imgarea img');
+                    var textArea = document.querySelector('.textArea');
+                    var starBox = document.querySelector('.starArea');
+                    var finishComment = document.querySelector('.finish_comment');
+                    var needsBox = document.querySelector('.needsbox');
+                    starBox.style.display = 'none';
+                    needsBox.style.display = 'none';
+                    finishComment.style.display = 'block';
+                    finishComment.style.paddingBottom = '15px';
+                    finishComment.firstElementChild.innerHTML = `의견을 반영하여 더 만족하실 수 있는<br/>스푼이 되도록 노력하겠습니다.`
+                    emo.attributes.src.value = 'http://d1mccvietm6wep.cloudfront.net/spoon/last.png';// 이미지 경로
+                    textArea.firstElementChild.innerHTML = `<strong>소중한 의견</strong> 감사합니다!`;
+                });
+            }
+            
+            var stars = document.querySelectorAll('.starArea span');
+            var needs = document.querySelectorAll('.problemList button');
+            var commentInp = document.querySelector('.comment input');
+            var submitBtn = document.querySelector('.submitBtn button');
+            
+            var RclickStar = clickStar;
+            var RclickNeeds = clickNeeds;
+            var RchangeInp = changeInp;
+            var RsubmitContent = submitContent;
+            
+            RclickStar(stars);
+            RclickNeeds(needs);
+            RchangeInp(commentInp);
+            RsubmitContent(submitBtn);
+
+            window.addEventListener("ab.BridgeReady", function () {                
+                $('submitBtn > button').on('click', function() {                       
+                    eventProperties = {};
+
+                    if (ratings) {
+                        eventProperties[eventProperty1Name] = ratings;                        
+                        if (ratings < 4) {
+                            var problemButtonList = document.querySelectorAll('.problemList li.on button');
+                            for (var item of commentButtonList) {
+                                problems.push(item.innerText);
+                            }
+                        }
+                    }
+
+                    if (problems.length > 0) {
+                        eventProeprties[eventProeprty2Name] = problems.join(",");
+                    }
+
+                    appboyBridge.logClick("0");         
+                    appboyBridge.logCustomEvent(eventName,eventProeprties); 
+                    appboyBridge.requestImmediateDataFlush();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

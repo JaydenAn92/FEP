@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css">          
@@ -23,7 +24,7 @@
 
         main{
             height: 100%; 
-            position: relative;
+            position: fixed;
         }
 
         body *{
@@ -75,9 +76,10 @@
         /* contents 03-12 수정 */
 
         main{
-            position: relative; 
+            position: fixed; 
             left: 0; 
-            top: 0;  
+            top: 0;
+            width: 100%;
             height: 100%;
         }
 

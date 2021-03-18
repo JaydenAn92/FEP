@@ -511,7 +511,7 @@
                     </div>
                     <div class="commnetbox">
                         <div class="comment">
-                            <input type="text" inputmode="text" placeholder="자유롭게 의견을 보내주세요."> 
+                            <input type="text" inputmode="text" placeholder="자유롭게 의견을 보내주세요." id="enterKey" /> 
                             <div class="submitBtn">
                                 <button type="submit">제출하기</button>
                             </div>
@@ -645,7 +645,15 @@
                     textArea.firstElementChild.innerHTML = `<strong>소중한 의견</strong> 감사합니다!`;
                 });
             }
+
+            var enterKey = function(el){
+                el.addEventListener('keyup', function() {
+                    el.blur();
+                    // alert('a');
+                })
+            }
             
+            var enterK = document.querySelector('#enterKey');
             var stars = document.querySelectorAll('.starArea span');
             var needs = document.querySelectorAll('.problemList button');
             var commentInp = document.querySelector('.comment input');
@@ -655,11 +663,13 @@
             var RclickNeeds = clickNeeds;
             var RchangeInp = changeInp;
             var RsubmitContent = submitContent;
+            var RenterKey = enterKey;
             
             RclickStar(stars);
             RclickNeeds(needs);
             RchangeInp(commentInp);
             RsubmitContent(submitBtn);
+            RenterKey(enterK);
 
             window.addEventListener("ab.BridgeReady", function () {                
                 $('submitBtn > button').on('click', function() {                       
